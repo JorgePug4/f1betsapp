@@ -1,6 +1,5 @@
-import { Button } from '@nextui-org/button';
 import Image from 'next/image'
-import { Card, CardHeader, CardBody, CardFooter, Divider, Link } from "@nextui-org/react";
+import { Card, CardHeader, CardBody} from "@nextui-org/react";
 import FormLogin from './Components/FormLogin';
 
 export default function Login() {
@@ -33,7 +32,7 @@ export default function Login() {
               </CardHeader>
               <CardBody>
                 <p></p>
-              </CardBody>
+              </CardBody> (415:1)
             </Card>
           </div>
         </div>

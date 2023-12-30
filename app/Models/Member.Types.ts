@@ -1,4 +1,4 @@
-interface IMember{
+export interface IMember{
     completeName?: string;
     phoneNumber?: string;
     password?: string;
@@ -6,12 +6,12 @@ interface IMember{
     recommended?: string;
 }
 
-interface ILogin{
+export interface ILogin{
     phoneNumber: string;
     password: string;
 }
 
-interface IRequestLogin{
+export interface IRequestLogin{
     completeName: string;
     phoneNumber: string;
     password: string;
@@ -20,7 +20,7 @@ interface IRequestLogin{
 }
 
 
-interface IResponseLogin{
+export interface IResponseLogin{
     completeName?: string;
     phoneNumber?: string;
     password?: string;
@@ -30,4 +30,15 @@ interface IResponseLogin{
     status?: number;
     error:Error;
 
+}
+
+export const MemberEmptyState: IMember = {
+    completeName: '',
+    phoneNumber: '',
+    password: '',
+    emailAddress: '',
+    recommended: ''
+};
+export interface PersistInfo {
+    member: IMember;
 }

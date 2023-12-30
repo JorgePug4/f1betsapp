@@ -7,13 +7,17 @@ import { useRouter } from 'next/navigation'
 import { fetchPost } from '@/app/Services/baseService';
 import { sharingInformationService } from '@/app/Services/sharing-information.serviece';
 import getSha512 from '@/app/Utilities/hash';
+import { ILogin, IResponseLogin } from '@/app/Models/Member.Types';
+import { useDispatch } from 'react-redux';
+import { createmember } from '@/app/Context/Slices/MemberSlice';
 export default function FormLogin() {
+    const dispatch = useDispatch();
     const router = useRouter()
     const validateLength = (e: any) => {
         if (e.target.value.length > e.target.maxLength)
             e.target.value = e.target.value.slice(0, e.target.maxLength);
     }
-    const { register, formState: { errors }, handleSubmit  } = useForm<ILogin>();
+    const { register, formState: { errors }, handleSubmit, reset  } = useForm<ILogin>();
     const onSubmit: SubmitHandler<ILogin> = async (data: ILogin): Promise<void> => {
         data.password = getSha512(data.password);
         fetchPost<ILogin, IResponseLogin>('/api/member/login', data).then((response: IResponseLogin) => {
@@ -21,7 +25,7 @@ export default function FormLogin() {
                 sharingInformationService.setModalInfo({ title: 'Información', message: response.error.message, isOpen: true });
             }
             else{
-                sharingInformationService.setModalInfo({ title: 'Información', message: "Ingreso correcto.", isOpen: true });
+                dispatch(createmember(response));
             }
         }).catch((error) => { })
     };
