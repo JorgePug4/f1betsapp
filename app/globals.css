@@ -2,22 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "font-f1";
+  src: url("./Assets/Fonts/Formula1-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "font-f1-2";
+  src: url("./Assets/Fonts/Formula1-Regular_web_0.ttf") format("opentype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --redf1:#e10600;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 255, 255, 255;
+    --background-end-rgb: 255, 255, 255;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
+  height: 100vh;
   background: linear-gradient(
       to bottom,
       transparent,
@@ -25,3 +42,6 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+
+/* #0090D0 */
