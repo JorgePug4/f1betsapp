@@ -6,6 +6,7 @@ import ModalInfo from './Common/Modal/page';
 import { Provider } from 'react-redux';
 import { persistor, store } from './Context/store';
 import { PersistGate } from 'redux-persist/integration/react';
+import Loading from './Common/loaders/Loading';
 const inter = Inter({ subsets: ['latin'] })
 
 
@@ -22,17 +23,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Provider store={store}>
-        {/* <PersistGate loading={null} onBeforeLift={onBeforeLift}
-          persistor={persistor}> */}
-          <body className={inter.className}>
-            <div className='' >
-              <Providers>
-                {children}
-              </Providers>
-            </div>
-            <ModalInfo />
-          </body>
-        {/* </PersistGate> */}
+        <PersistGate loading={null} onBeforeLift={onBeforeLift}
+          persistor={persistor}>
+          {() => (
+            <body className={inter.className}>
+              <Loading />
+              <div className='' >
+                <Providers>
+                  {children}
+                </Providers>
+              </div>
+              <ModalInfo />
+            </body>
+          )}
+        </PersistGate>
       </Provider>
     </html>
   )

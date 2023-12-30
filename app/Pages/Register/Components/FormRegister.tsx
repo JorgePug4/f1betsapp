@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation'
 import { fetchPost } from '@/app/Services/baseService';
 import { sharingInformationService } from '@/app/Services/sharing-information.serviece';
 import getSha512 from '@/app/Utilities/hash';
+import { EXCEPTION_MESSAGES } from '@/app/Utilities/constants';
+import { ILogin, IRequestLogin, IResponseLogin } from '@/app/Models/Member.Types';
 function FormRegister() {
     const router = useRouter()
     const validateLength = (e: any) => {
@@ -20,9 +22,9 @@ function FormRegister() {
                 sharingInformationService.setModalInfo({ title: 'Información', message: response.error.message, isOpen: true });
                 if(response.error.no == 0) reset()
             } else {
-                sharingInformationService.setModalInfo({ title: 'Error', message: "Ocurrió un error inesperado, favor de intentarlo mas tarde.", isOpen: true });
+                sharingInformationService.setModalInfo({ title: 'Error', message: EXCEPTION_MESSAGES, isOpen: true });
             }
-        }).catch((error) => { })
+        }).catch((error) => { sharingInformationService.setModalInfo({ title: 'Error', message: EXCEPTION_MESSAGES, isOpen: true }); })
     }
     return (
         <>

@@ -1,0 +1,1 @@
+export const EXCEPTION_MESSAGES:string = 'Ocurrió un error inesperado, por favor intente más tarde'; 

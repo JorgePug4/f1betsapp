@@ -32,7 +32,7 @@ export default function Login() {
               </CardHeader>
               <CardBody>
                 <p></p>
-              </CardBody> (415:1)
+              </CardBody> 
             </Card>
           </div>
         </div>

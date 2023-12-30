@@ -10,6 +10,7 @@ import getSha512 from '@/app/Utilities/hash';
 import { ILogin, IResponseLogin } from '@/app/Models/Member.Types';
 import { useDispatch } from 'react-redux';
 import { createmember } from '@/app/Context/Slices/MemberSlice';
+import { EXCEPTION_MESSAGES } from '@/app/Utilities/constants';
 export default function FormLogin() {
     const dispatch = useDispatch();
     const router = useRouter()
@@ -27,7 +28,9 @@ export default function FormLogin() {
             else{
                 dispatch(createmember(response));
             }
-        }).catch((error) => { })
+        }).catch((error) => {
+            sharingInformationService.setModalInfo({ title: 'Información', message: EXCEPTION_MESSAGES, isOpen: true });
+         })
     };
     return (
         <>
